@@ -1,120 +1,94 @@
-import {  useEffect,useState } from 'react';
-import { useMovie } from '../Component/useMovie'
+//import {  useEffect,useState } from 'react';
+//import { useMovie } from '../Component/useMovie'
 //import { MovieProvider } from './MovieContext/WatchlistContext';
-import SerchBar from '../Component/Serchbar';
-//import { Link , Routes , Route} from 'react-router-dom';
-//import PopularPage from './PopularPage';
-//import TrendingPage from './Trending';
 
 export default function Home() {
 //    const { loading, error, fetchMovie, searchMovie } = useMovie();
-      const {FetchMovie, loding , error ,searchMovie} = useMovie();
+    //   const {FetchMovie, loding , error ,searchMovie} = useMovie();
+    //   const [movies, setMovies] = useState([]);
 
-    const [movies, setMovies] = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');  // Track what we're searching
+    // // ✅ Load popular movies on mount
+    // useEffect(() => {
+    //     const loadPopular = async () => {
+    //         const data = await FetchMovie();
+    //         if (data && data.results) {
+    //             setMovies(data.results);
+    //         }
+    //     };
+    //     loadPopular();
+    // }, []);
+       
+    //   <h2>
+    //                 {searchQuery 
+    //                     ? `Search Results for "${searchQuery}" (${movies.length})`
+    //                     : `Popular Movies (${movies.length})`
+    //                 }
+    //             </h2>
 
-    // ✅ Load popular movies on mount
-    useEffect(() => {
-        const loadPopular = async () => {
-            const data = await FetchMovie();
-            if (data && data.results) {
-                setMovies(data.results);
-            }
-        };
-        loadPopular();
-    }, []);
-    
-    // ✅ Handle search from SearchBar
-    const handleSearch = async (query) => {
-        setSearchQuery(query);  // Save what we searched
-        console.log(query);
-        
-        if (!query) {
-            // If query is empty, load popular movies again
-            const data = await FetchMovie();
-            if (data && data.results) {
-                setMovies(data.results);
-            }
-        } else {
-            // Search for specific movies
-            const data = await searchMovie(query);
-            if (data && data.results) {
-                setMovies(data.results);
-            }
-        }
-    };
+    // if (loding) {
+    //     return (
+    //         <div className="loading">
+    //             <div className="spinner"></div>
+    //             <h2>Loading movies... 🎬</h2>
+    //         </div>
+    //     );
+    // }
 
-    if (loding) {
-        return (
-            <div className="loading">
-                <div className="spinner"></div>
-                <h2>Loading movies... 🎬</h2>
-            </div>
-        );
-    }
+    // if (error) {
+    //     return (
+    //         <div className="error">
+    //             <h2>❌ Error: {error}</h2>
+    //             <button onClick={() => window.location.reload()}>
+    //                 Try Again
+    //             </button>
+    //         </div>
+    //     );
+    // }
 
-    if (error) {
-        return (
-            <div className="error">
-                <h2>❌ Error: {error}</h2>
-                <button onClick={() => window.location.reload()}>
-                    Try Again
-                </button>
-            </div>
-        );
-    }
+    // return (
+    //     <div className="app">
+    //         <header className="header">
+    //         </header>
 
-    return (
-        <div className="app">
-            <header className="header">
-                <SerchBar OnSearch={handleSearch} />
+    //         <main className="container">
+              
 
-            </header>
-
-            <main className="container">
-                <h2>
-                    {searchQuery 
-                        ? `Search Results for "${searchQuery}" (${movies.length})`
-                        : `Popular Movies (${movies.length})`
-                    }
-                </h2>
-
-                {movies.length === 0 ? (
-                    <div className="no-results">
-                        <h3>No movies found 😕</h3>
-                        <p>Try a different search term</p>
-                    </div>
-                ) : (
-                    <div className="movie-grid">
-                        {movies.map(movie => (
-                            <div key={movie.id} className="movie-card">
-                                <img 
-                                    src={
-                                        movie.poster_path
-                                            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                                            : 'https://via.placeholder.com/500x750?text=No+Poster'
-                                    }
-                                    alt={movie.title}
-                                    className="movie-poster"
-                                />
-                                <div className="movie-info">
-                                    <h3 className="movie-title">{movie.title}</h3>
-                                    <div className="movie-meta">
-                                        <span className="rating">
-                                            ⭐ {movie.vote_average.toFixed(1)}
-                                        </span>
-                                        <span className="year">
-                                            {movie.release_date?.split('-')[0] || 'N/A'}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </main>
+    //             {movies.length === 0 ? (
+    //                 <div className="no-results">
+    //                     <h3>No movies found 😕</h3>
+    //                     <p>Try a different search term</p>
+    //                 </div>
+    //             ) : (
+    //                 <div className="movie-grid">
+    //                     {movies.map(movie => (
+    //                         <div key={movie.id} className="movie-card">
+    //                             <img 
+    //                                 src={
+    //                                     movie.poster_path
+    //                                         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    //                                         : 'https://via.placeholder.com/500x750?text=No+Poster'
+    //                                 }
+    //                                 alt={movie.title}
+    //                                 className="movie-poster"
+    //                             />
+    //                             <div className="movie-info">
+    //                                 <h3 className="movie-title">{movie.title}</h3>
+    //                                 <div className="movie-meta">
+    //                                     <span className="rating">
+    //                                         ⭐ {movie.vote_average.toFixed(1)}
+    //                                     </span>
+    //                                     <span className="year">
+    //                                         {movie.release_date?.split('-')[0] || 'N/A'}
+    //                                     </span>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     ))}
+    //                 </div>
+    //             )}
+    //         </main>
       
      
-        </div>          
-    );
+    //     </div>          
+    // );
 }

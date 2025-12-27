@@ -1,22 +1,32 @@
-import { useEffect, useState } from "react"
-import { useMovie } from "../Component/useMovie";
-import { Link } from "react-router-dom";
-export default function PopularPage(){
-    const {FetchPopular , loding , error} = useMovie();
-    const [Popularmovie , setPopularmovie] = useState([]);
+import {  useEffect,useState } from 'react';
+import { useMovie } from '../Component/useMovie'
+import { Link } from 'react-router-dom';
+//import { MovieProvider } from './MovieContext/WatchlistContext';
 
+export default function Toprated() {
+//    const { loading, error, fetchMovie, searchMovie } = useMovie();
+      const {FetchMovie, loding , error ,searchMovie} = useMovie();
+      const [movies, setMovies] = useState([]);
+
+    // ✅ Load popular movies on mount
     useEffect(() => {
-        const loadpopuler = async () => {
-         const data = await FetchPopular();
-           if (data && data.results) {
-            setPopularmovie(data.results);
-           }
-        }
-        loadpopuler(); 
-    },[]);
+        const loadPopular = async () => {
+            const data = await FetchMovie();
+            if (data && data.results) {
+                setMovies(data.results);
+            }
+        };
+        loadPopular();
+    }, []);
+       
+    //   <h2>
+    //                 {searchQuery 
+    //                     ? `Search Results for "${searchQuery}" (${movies.length})`
+    //                     : `Popular Movies (${movies.length})`
+    //                 }
+    //             </h2>
 
-
-     if (loding) {
+    if (loding) {
         return (
             <div className="loading">
                 <div className="spinner"></div>
@@ -35,15 +45,23 @@ export default function PopularPage(){
             </div>
         );
     }
-    
-    return(
-        <>
-               { Popularmovie.length === 0 ? (
-                <p>Popular Data not found</p> ) :
-                (
-            <div>
 
-          {Popularmovie.map(movie => (
+    return (
+        <div className="app">
+            <header className="header">
+            </header>
+
+            <main className="container">
+              
+
+                {movies.length === 0 ? (
+                    <div className="no-results">
+                        <h3>No movies found 😕</h3>
+                        <p>Try a different search term</p>
+                    </div>
+                ) : (
+                    <div className="movie-grid">
+                        {movies.map(movie => (
                             <Link key={movie.id} to={`/movie/${movie.id}`} className="movie-card">
                                 <img 
                                     src={
@@ -54,7 +72,7 @@ export default function PopularPage(){
                                     alt={movie.title}
                                     className="movie-poster"
                                 />
-                                    <div className="movie-info">
+                                <div className="movie-info">
                                     <h3 className="movie-title">{movie.title}</h3>
                                     <div className="movie-meta">
                                         <span className="rating">
@@ -67,10 +85,11 @@ export default function PopularPage(){
                                 </div>
                             </Link>
                         ))}
-            </div>
-
-                )
-            }
-        </>
-    )
+                    </div>
+                )}
+            </main>
+      
+     
+        </div>          
+    );
 }

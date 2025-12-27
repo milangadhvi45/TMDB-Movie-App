@@ -1,5 +1,4 @@
 import { useState } from "react";
-//import { UseMovieContext } from "../MovieContext/WatchlistContext";
 
 const API_KEY = import.meta.env.VITE_MOVIE_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3'
@@ -24,7 +23,7 @@ export function useMovie(){
    }
 
    let tmdbDATA =await response.json();
-   console.log('movie data is here',tmdbDATA);
+ //  console.log('movie data is here',tmdbDATA);
 
    setloding(false)
    return tmdbDATA;
@@ -37,6 +36,32 @@ export function useMovie(){
     
 }
 
+  const FetchCard = async (movieid) => {
+        setloding(true);
+        seterror(null);
+
+        try {
+            const response = await fetch(
+               `${BASE_URL}/movie/${movieid}?api_key=${API_KEY}&append_to_response=credits,videos,similar`
+                //`${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
+            );
+
+            if (!response.ok) {
+                throw new Error('Movie details not found');
+            }
+
+            const data = await response.json();
+            console.log('🎬 Movie Details:', data);
+            setloding(false);
+            return data;
+
+        } catch (err) {
+            seterror(err.message);
+            setloding(false);
+            return null;
+        }
+    };
+
 const FetchTrending = async (page = 1) => {
   setloding(true);
   seterror(null);
@@ -48,7 +73,7 @@ const FetchTrending = async (page = 1) => {
       }
 
       const TrendingData =await response.json();
-      console.log(TrendingData);
+     // console.log(TrendingData);
       setloding(false);
 
       return TrendingData;
@@ -71,7 +96,7 @@ const FetchPopular = async (page = 1) => {
   throw new Error('Popular Data Not Found')
  }
  let Populardata = await response.json();
-   console.log('Popular movie data is here',Populardata);
+  // console.log('Popular movie data is here',Populardata);
 
  setloding(false);
 
@@ -83,20 +108,6 @@ const FetchPopular = async (page = 1) => {
  }
 }
 
-
-// const FetchTrending = async()=> {
-//   setloding(true);
-//   seterror(null);
-
-//   try {
-//     const response = await fetch(
-//       `${BASE_URL}/trendingmovie/`
-//       //https://api.themoviedb.org/3/trending/movie/{time_window}
-//     )
-//   } catch (err) {
-    
-//   }
-// }
  const searchMovie = async (query , page = 1) => {
    if (!query || query.trim() === '') {
     return null
@@ -128,7 +139,5 @@ const FetchPopular = async (page = 1) => {
    }
  }
 
-return {loding,error , FetchMovie ,FetchPopular ,FetchTrending,searchMovie}
-  // const popularURL = `${BASE_URL}/movie/popular?api_key=${API_KEY}`;
-//const SerachURL= `${Base_URL}/movie/`
+return {loding,error , FetchMovie ,FetchPopular ,FetchTrending,FetchCard,searchMovie}
 }

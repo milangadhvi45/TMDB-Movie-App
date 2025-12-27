@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useMovie } from "../Component/useMovie"
-import { Link, useParams } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import '../App.css'
 export default function TrendingPage(){
+  // const {MovieId} = useParams();
     const {FetchTrending} = useMovie();
     const [Trending , setTrending] = useState([]);
-    const [Trendingcard , setTrendingcard] = useState([])
+  //  const [Trendingcard , setTrendingcard] = useState([])
 
     useEffect(() => {
  const LoadTrending = async () => {
@@ -20,11 +21,7 @@ export default function TrendingPage(){
     } , [])
    console.log(Trending);
 
-   const {MovieId} = useParams();
-   const MovieCard = Trending.find(u => u.id  === Number(MovieId))
-  if (MovieCard) {
-   setTrendingcard(MovieCard);    
-  }
+   
 
     return(
       <>
@@ -33,35 +30,31 @@ export default function TrendingPage(){
         ) : (
             <div>
                 {Trending.map(Movie => (
-                    <div key={Movie.id}>
+                  <Link to={`/movie/${Movie.id}`}
+                  key={Movie.id}
+                  >
+
+                    <div>
                     <img src={
                           Movie.poster_path
                                             ? `https://image.tmdb.org/t/p/w500${Movie.poster_path}`
                                             : 'https://via.placeholder.com/500x750?text=No+Poster'
-                    } alt="" />
+                    } alt=""/>
 
                     <h3>{Movie.title}</h3>
+                    <p>{Movie.id}</p>
                       <h5>{Movie.vote_average}.toFixed(1)</h5>
                       <h5>{Movie.release_date?.split('-')[0] || 'N/A' }</h5>
-                      <button>
-                        <Link to={`/trending/${Movie.id}`}>View</Link>
-                      </button>
+                      
                     </div>
+                  </Link>
+
                 ))}
             </div>
         )}   
 
 
-        {MovieCard && (
-            <div>
-                {Trendingcard.map(card => (
-                   <div>
-                    <h3>{card.id}</h3>
-                    <h3>{card.title}</h3>
-                   </div> 
-                ))}
-            </div>
-        )} 
+
       </>  
     )
 }
