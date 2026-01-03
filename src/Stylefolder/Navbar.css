@@ -45,6 +45,10 @@
 
 .logo-icon {
     font-size: 2rem;
+     background: linear-gradient(135deg, #e50914 0%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .logo-text {
@@ -59,13 +63,15 @@
     flex: 1;
     max-width: 500px;
     display: flex;
-    align-items: center;
     gap: 0.5rem;
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     padding: 0.3rem 0.5rem;
     transition: all 0.3s;
+    align-content: end;
+     margin-left: 38rem; 
+
 }
 
 .search-form:focus-within {
@@ -77,8 +83,7 @@
 .search-input {
     flex: 1;
     background: transparent;
-    border: none;
-    color: white;
+    color: whitesmoke ;
     font-size: 1rem;
     padding: 0.7rem 1rem;
     outline: none;
@@ -194,7 +199,7 @@
 .nav-links {
     display: flex;
     justify-content: center;
-    gap: 0;
+    gap: 11rem;
 }
 
 .nav-link {
@@ -241,9 +246,10 @@
    RESPONSIVE DESIGN
    ========================================== */
 
-@media (max-width: 968px) {
+@media (max-width: 1268px) {
     .search-form {
         max-width: 300px;
+        margin-left: 20rem;
     }
 
     .logo-text {
@@ -251,13 +257,37 @@
     }
 
     .nav-links {
-        gap: 0;
+        gap: 70px;
     }
 
     .nav-link {
-        padding: 1rem 1.5rem;
+        /* padding: 1rem 1.5rem; */
         font-size: 0.9rem;
+        gap: 11.3;
+
     }
+}
+
+@media (max-width: 933px) {
+
+
+    .logo-text {
+        display: none;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-link {
+        /* padding: 1rem 1.5rem; */
+        font-size: 0.9rem;
+
+    }
+
+         .search-form{
+        margin-left: 6rem;
+    } 
 }
 
 @media (max-width: 768px) {
@@ -276,6 +306,7 @@
         width: 100%;
         max-width: none;
         margin-top: 1rem;
+        margin-left: 4rem;
     }
 
     .watchlist-icon {
@@ -296,6 +327,7 @@
     .nav-links {
         flex-direction: column;
         gap: 0;
+        
     }
 
     .nav-link {
@@ -303,6 +335,8 @@
         text-align: center;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
+
+        
 }
 
 @media (max-width: 480px) {
@@ -322,4 +356,9 @@
     .search-input {
         font-size: 0.9rem;
     }
+ 
+     .search-form{
+        margin-left: 0rem;
+    } 
+    
 }

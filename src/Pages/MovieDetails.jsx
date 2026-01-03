@@ -48,7 +48,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useMovie } from '../Component/useMovie';
 //import { useMovieContext } from '../MovieContext/WatchlistContext';
 import { UseMovieContext } from '../MovieContext/WatchlistContext';
-
+import '../Stylefolder/index.css'
 export default function MovieDetails() {
     const { id } = useParams();  
     const navigate = useNavigate();
@@ -60,14 +60,9 @@ export default function MovieDetails() {
 
 
     useEffect(() => {
-    console.log('1. useParams ID:', id);
-    console.log('2. FetchCard function exists?', typeof FetchCard);
-    console.log('3. API_KEY exists?', import.meta.env.VITE_MOVIE_API_KEY !== undefined);
-    
+   
     const loadMovie = async () => {
-        console.log('4. Calling FetchCard with ID:', id);
         const data = await FetchCard(id);
-        console.log('5. Data returned:', data);
         
         if (data) {
             setMovie(data);
@@ -214,8 +209,8 @@ export default function MovieDetails() {
                         {/* Additional Info */}
                         <div className="additional-info">
                             <div className="info-item">
-                                <strong>Budget:</strong>
-                                <span>${movie.budget?.toLocaleString() || 'N/A'}</span>
+                                <span><strong>Budget:</strong>
+                                ${movie.budget?.toLocaleString() || 'N/A'}</span>
                             </div>
                             <div className="info-item">
                                 <strong>Revenue:</strong>

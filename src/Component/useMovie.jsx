@@ -51,7 +51,6 @@ export function useMovie(){
             }
 
             const data = await response.json();
-            console.log('🎬 Movie Details:', data);
             setloding(false);
             return data;
 

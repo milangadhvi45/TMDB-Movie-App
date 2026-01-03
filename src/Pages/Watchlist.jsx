@@ -1,7 +1,7 @@
 // src/Pages/Watchlist.jsx
 import { Link } from "react-router-dom";
 import { UseMovieContext } from "../MovieContext/WatchlistContext";
-import './App.css'
+import '../App.css'
 export default function Watchlist() {
     const { WatchList, RemoveWatchlist } = UseMovieContext();
 
@@ -22,7 +22,7 @@ export default function Watchlist() {
 
     return (
         <main className="container">
-            <h2>My Watchlist ({WatchList.length})</h2>
+            <h2 id="watch-length">My Watchlist ({WatchList.length})</h2>
 
             <div className="movie-grid">
                 {WatchList.map(movie => (

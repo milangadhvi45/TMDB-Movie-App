@@ -2,9 +2,9 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { UseMovieContext } from '../MovieContext/WatchlistContext';
-import '../Navbar.css';
+import '../Stylefolder/Navbar.css';
 
-export default function Navbar({ onSearch }) {
+export default function Navbar({onSearch}) {
     const [searchQuery, setSearchQuery] = useState('');
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { WatchList } = UseMovieContext();
@@ -32,7 +32,7 @@ export default function Navbar({ onSearch }) {
                     {/* Logo */}
                     <Link to="/" className="logo">
                         <span className="logo-icon">🎬</span>
-                        <span className="logo-text">Movie App</span>
+                        <span className="logo-text">CineVerse</span>
                     </Link>
 
                     {/* Search Bar */}
