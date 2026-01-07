@@ -12,7 +12,7 @@
   <h3>Your Ultimate Destination for Discovering Amazing Movies</h3>
   <p>A modern, responsive movie discovery platform built with React</p>
   
-  [Live Demo](#) • [Report Bug](#) • [Request Feature](#)
+  [Live Demo](https://cineverseapp-one.vercel.app/)
 </div>
 
 ---
@@ -151,8 +151,8 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the repository**
 
-```bash  
-   git clone https://github.com/yourusername/cineverse.git
+```bash
+   git clone https://github.com/milangadhvi45/Cineverse
    cd cineverse
 ```
 
@@ -189,9 +189,8 @@ Before you begin, ensure you have the following installed:
 
 6. **Open your browser**
 
-```
-   http://localhost:5173
-```
+````
+https://cineverseapp-one.vercel.app/```
 
 ---
 
@@ -201,7 +200,7 @@ Create a `.env` file in the root directory with the following:
 
 ```env
 VITE_MOVIE_API_KEY=your_tmdb_api_key_here
-```
+````
 
 > ⚠️ **Important**: Never commit your `.env` file to version control. It's already included in `.gitignore`.
 
@@ -243,7 +242,7 @@ cineverse/
 ├── src/
 │   ├── Components/
 │   │   ├── Navbar.css
-│   │   
+│   │
 │   │   └── Footer.css
 │   ├── Pages/
 │   │   ├── Home.jsx
@@ -253,13 +252,13 @@ cineverse/
 │   │   ├── TopRatedPage.jsx
 │   │   ├── MovieDetails.jsx
 |   |   ├── Footer.jsx
-|   |   ├── Navbar.jsx 
-│   │   └── Watchlist.jsx     
+|   |   ├── Navbar.jsx
+│   │   └── Watchlist.jsx
 │   ├── Stylefolder/
 │   │   ├── Home.css
 │   │   ├── index.css
 │   │   ├── Pages.css
-│   │   └── Navbar.css     
+│   │   └── Navbar.css
 │   ├── Component/
 |   |   ├── searchbar.jsx
 │   │   └── useMovie.jsx         # Custom hook for API calls
@@ -413,14 +412,14 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 **Milan Gadhvi**
 
-- Portfolio: [yourwebsite.com](https://yourwebsite.com)
+- Portfolio: [cineverse.com](https://cineverseapp-one.vercel.app/)
 - LinkedIn: [Milangadhvi45](https://www.linkedin.com/in/milansinh-gadhvi-9a7607332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 - Twitter: [@milangadhvi](https://x.com/Milangadhvi08?t=-C-SwhU8oYtGgfnneMJFSw&s=09)
 - Email: milansinh01@email.com
 
-**Project Link**: [https://github.com/yourusername/cineverse](https://github.com/yourusername/cineverse)
+**Project Link**: [https://github.com/milangadhvi45/Cineverse](https://github.com/milangadhvi45/Cineverse)
 
-**Live Demo**: [https://cineverse-app.vercel.app](https://cineverse-app.vercel.app)
+**Live Demo**: [https://cineverseapp-one.vercel.app/](https://cineverseapp-one.vercel.app/)
 
 ---
 
